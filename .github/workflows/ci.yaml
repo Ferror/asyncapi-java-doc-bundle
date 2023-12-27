@@ -13,11 +13,12 @@ jobs:
         name: Checkout Repository
         uses: actions/checkout@v4
 
-      - # Installs PHP and other necessary tools
-        name: Setup PHP
+      - # Installs Java and other necessary tools
+        name: Setup Java
         uses: actions/setup-java@v4
         with:
           java-version: 21
+          distribution: zulu
 
       - # Runs unit and integration tests
         name: Run Tests
