@@ -6,7 +6,7 @@
 >
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.ferror</groupId>
+    <groupId>io.github.ferror</groupId>
     <artifactId>asyncapi-doc-bundle</artifactId>
     <version>1.0.0</version>
 
