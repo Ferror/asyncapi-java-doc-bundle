@@ -100,7 +100,7 @@
                 <version>0.1.2</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <publishingServerId>central</publishingServerId>
+                    <publishingServerId>ossrh</publishingServerId>
                     <tokenEnabled>true</tokenEnabled>
                 </configuration>
             </plugin>
