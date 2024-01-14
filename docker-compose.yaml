@@ -1,0 +1,6 @@
+services:
+  library:
+    build:
+      context: .
+    volumes:
+      - ./:/app/

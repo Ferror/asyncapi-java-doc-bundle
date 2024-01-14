@@ -1,0 +1,33 @@
+name: Build Docker Image
+
+on:
+  push:
+    branches-ignore:
+      - master
+    paths-ignore:
+      - '*.md'
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [linux/amd64,linux/arm64]
+    runs-on: ubuntu-latest
+    name: Build Image
+    steps:
+      -
+        name: Set Up QEMU
+        uses: docker/setup-qemu-action@v3
+      -
+        name: Set Up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      -
+        name: Build Image
+        uses: docker/build-push-action@v4
+        with:
+          push: false
+          load: false
+          platforms: ${{ matrix.platform }}
+          cache-from: type=gha
+          cache-to: type=gha
