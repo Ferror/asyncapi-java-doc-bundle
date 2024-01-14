@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch: ~
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - # Copies the repository files to the Action Runner
+        name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - # Installs Java and other necessary tools
+        name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: zulu
+          server-id: ossrh
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_PASSWORD
+
+      - # Runs unit and integration tests
+        name: Run Tests
+        run: mvn test
+
+      -
+        name: Publish Package
+        run: mvn --batch-mode deploy
+        env:
+          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
