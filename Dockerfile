@@ -12,3 +12,5 @@ COPY --from=maven /usr/share/maven/ref/settings-docker.xml /usr/share/maven/ref/
 RUN ln -s ${MAVEN_HOME}/bin/mvn /usr/bin/mvn
 
 COPY . /app/
+
+WORKDIR /app/
